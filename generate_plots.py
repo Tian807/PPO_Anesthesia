@@ -4,12 +4,12 @@ import seaborn as sns
 from stable_baselines3 import PPO
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.callbacks import BaseCallback
-from patient_env import AnesthesiaEnv
+from patient_env import AnaesthesiaEnv
 
 # --- SETUP ---
 # Load the environment and your trained model
-env = AnesthesiaEnv()
-model = PPO.load("ppo_anesthesia_agent")
+env = AnaesthesiaEnv()
+model = PPO.load("ppo_anaesthesia_agent")
 plt.style.use('seaborn-v0_8-whitegrid') 
 
 # ========================================================
@@ -118,7 +118,7 @@ bis_values = np.linspace(20, 80, 50)  # X-axis: BIS from Deep (20) to Awake (80)
 conc_values = np.linspace(0, 6, 50)   # Y-axis: Brain Concentration 0 to 6
 action_grid = np.zeros((50, 50))
 
-# 2. Ask the AI what it would do in each state
+# 2. Ask the agent what it would do in each state
 # We fix the patient to a standard 40yr old male for this test
 fixed_demographics = [0.40, 0.70, 1.70, 0.0] # Age 40, 70kg, 170cm, Male
 
@@ -188,7 +188,7 @@ plt.legend()
 plt.grid(axis='y', alpha=0.5)
 
 plt.tight_layout()
-plt.savefig("plot_population_robustness_300.png")
-print("Saved 'plot_population_robustness_300.png'")
+plt.savefig("plot_population_robustness_100.png")
+print("Saved 'plot_population_robustness_100.png'")
 
 plt.show()

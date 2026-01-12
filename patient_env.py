@@ -2,9 +2,9 @@ import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
 
-class AnesthesiaEnv(gym.Env):
+class AnaesthesiaEnv(gym.Env):
     def __init__(self):
-        super(AnesthesiaEnv, self).__init__()
+        super(AnaesthesiaEnv, self).__init__()
         
         # Action: Propofol infusion rate (Normalised for PPO: -1 to 1)
         self.action_space = spaces.Box(low=-1.0, high=1.0, shape=(1,), dtype=np.float32)
@@ -24,7 +24,7 @@ class AnesthesiaEnv(gym.Env):
     def _get_schnider_params(self, age, weight, height, gender):
         """
         Calculates PK constants based on the Schnider Model.
-        This enables the agent to treat random patients (Domain Randomization).
+        This enables the agent to treat random patients (Domain Randomisation).
         Values taken from: Schnider, T. W., et al. (1998). "The influence of age on propofol pharmacodynamics."
         """
         # Lean Body Mass (lbm) calculated from James Equation

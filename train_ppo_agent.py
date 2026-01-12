@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from stable_baselines3 import PPO
 from stable_baselines3.common.callbacks import BaseCallback
-from patient_env import AnesthesiaEnv  # Assuming your environment file is named patient_env.py
+from patient_env import AnaesthesiaEnv  # Assuming your environment file is named patient_env.py
 
 # Callback to log rewards during training
 class RewardLogger(BaseCallback):
@@ -18,18 +18,18 @@ class RewardLogger(BaseCallback):
         return True
 
 # Setup and training the PPO agent
-env = AnesthesiaEnv()
+env = AnaesthesiaEnv()
 print("Starting PPO Training...")
 
 reward_callback = RewardLogger()
 model = PPO("MlpPolicy", env, verbose=1, learning_rate=0.0003)
 
 # Train the Agent
-model.learn(total_timesteps=250000, callback=reward_callback)
+model.learn(total_timesteps=25, callback=reward_callback)
 
 print("Training Complete!")
-model.save("ppo_anesthesia_agent")
-print("Model saved as 'ppo_anesthesia_agent.zip'")
+model.save("ppo_anaesthesia_agent")
+print("Model saved as 'ppo_anaesthesia_agent.zip'")
 
 # Plotting the Learning Curve
 print("Generating Learning Curve...")
